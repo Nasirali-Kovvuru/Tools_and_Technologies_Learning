@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nasir-first-replicationcontroller
+  labels:
+    environment: production
+    located : front-end-pods
+spec:
+  template:
+    metadata:
+      name: nasir-first-pod
+      labels:
+        environment: production
+        located : front-end
+    spec:
+      containers:
+        - name: nasir-container
+          image: nginx
+  replicas: 1

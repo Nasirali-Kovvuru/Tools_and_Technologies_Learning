@@ -1,0 +1,70 @@
+-----------TASK-1----------- (host service in windows docker) ----
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker build -t knote .
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker network create knote
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker run --name=mongo --rm --network=knote mongo 
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker run --name=knote --rm --network=knote -p 3000:3000 -e MONGO_URL=mongodb://mongo:27017/dev knote
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker ps                                      CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                    NAMES
+1418bd6215fd   knote     "node index.js"          32 minutes ago   Up 32 minutes   0.0.0.0:3000->3000/tcp   knote
+f4086e84600b   mongo     "docker-entrypoint.s…"   38 minutes ago   Up 38 minutes   27017/tcp                mongo
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker stop mongo knote                        mongo
+knote
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker ps                                      CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+-------- TASK-2 ----------------- (uploading to registry) -----
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker images 
+
+                                 REPOSITORY    TAG       IMAGE ID       CREATED             SIZE
+knote         latest    4f2a799f4717   About an hour ago   172MB
+mongo         latest    b8264a857eba   19 hours ago        449MB
+hello-world   latest    bf756fb1ae65   13 months ago       13.3kB
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker tag knote nasirali568/knote-js:1.0.0    
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker push nasirali568/knote-js:1.0.0   
+      
+The push refers to repository [docker.io/nasirali568/knote-js]
+5cd42454f1f6: Pushed                                                                         7b34c86e0c93: Pushed                                                                         ca6640b0e6c3: Mounted from library/node                                                      f05f920f53a1: Mounted from library/node                                                      c52d9b6ac030: Mounted from library/node                                                      5dacd731af1b: Mounted from library/node                                                      1.0.0: digest: sha256:6853503f81d41508e1d0f215a62dda8c22503bf7c14b826819a8e55a89841954 size: 1580 
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker run --name=mongo --rm --network=knote mongo
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker run --name=knote --rm --network=knote -p 3000:3000 -e MONGO_URL=mongodb://mongo:27017/dev nasirali568/knote-js:1.0.0
+
+PS C:\Users\nasir\Desktop\knote-js-master\02> docker stop mongo knote                        
+mongo
+knote
+
+---------- minikube ----------
+https://learnk8s.io/installing-docker-kubernetes-windows
+
+PS C:\WINDOWS\system32> minikube start
+* minikube v1.17.1 on Microsoft Windows 10 Education 10.0.18363 Build 18363
+* Using the docker driver based on existing profile
+* Starting control plane node minikube in cluster minikube
+* Updating the running docker "minikube" container ...
+* Found network options:
+  - NO_PROXY=192.168.99.100
+  - no_proxy=192.168.99.100
+* Preparing Kubernetes v1.20.2 on Docker 20.10.2 ...
+  - env NO_PROXY=192.168.99.100
+* Verifying Kubernetes components...
+* Enabled addons: storage-provisioner, default-storageclass
+
+! C:\ProgramData\chocolatey\bin\kubectl.exe is version 1.13.3, which may have incompatibilites with Kubernetes 1.20.2.
+  - Want kubectl v1.20.2? Try 'minikube kubectl -- get pods -A'
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+PS C:\WINDOWS\system32> kubectl cluster-info
+Kubernetes master is running at https://127.0.0.1:49153
+KubeDNS is running at https://127.0.0.1:49153/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+PS C:\WINDOWS\system32>
+
+
+

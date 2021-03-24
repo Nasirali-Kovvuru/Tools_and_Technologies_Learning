@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nasir-first-pod
+  labels:
+    environment: production
+    located : front-end
+spec:
+  containers:
+    - name: nasir-container
+      image: nginx
