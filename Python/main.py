@@ -135,10 +135,14 @@ if __name__ == '__main__':
     print(a+2)
     print(a * 22)
 
-    p1 = Point(3, 4)
-    p2 = Point(3, 2)
-    p3 = Point(1, 3)
-    p4 = Point(0, 1)
+    p1 = Point(3,
+               4)
+    p2 = Point(3,
+               2)
+    p3 = Point(1,
+               3)
+    p4 = Point(0,
+               1)
     print(p1 + p2)
     print(p1 - p2)
     print(p1 * p2)
