@@ -1,0 +1,22 @@
+{
+  "name": "rest-mentime",
+  "version": "1.0.0",
+  "description": "backend service implementation for view.js",
+  "main": "app.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nasirali-Kovvuru/Tools_and_Technologies_Learning/tree/main/nodejs%20task%20mentime"
+  },
+  "author": "Nasirali Kovvuru",
+  "license": "ISC"
+}
