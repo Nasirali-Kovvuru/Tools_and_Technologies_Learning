@@ -23,10 +23,11 @@ Similarly, for Developing backend Applications, packages like express, cors are 
 
 Main Things Missing to go to production:
 ---------------------------------------
-To comply with production-grade Applications, the frontend service should be containerized, load-balanced (using Reverse proxy), Hypervised (Kubernetes or openshift etc), hosted with robust CI/CD Pipelines such each change get into action quickly with best deployment strategies.
+To comply with production grade Applications, the frontend service should be containerized, load balanced (using Reverse proxy), Hypervised (kubernetes or openshift etc), hosted with robust CI/CD Pipelines such each change gets into action quickly with best deployment strategies. 
 
-Similarly, for Backend service: Firstly, make node server could update without having to reboot the container/service. It is achievable by using "nodemon" utility while Running container/application and it would require corresponding packages to import. 
-then, to grow and shrink such to serve users, it should have all the above features mentioned for the frontend service.
+Similarly, for Backend service: Firstly, make node server could update without having to reboot the container/service. It is achievable by using "nodemon" utility while Running container/application and it would require corresponding packages to import. then, to grow and shrink such to serve users, it should have all the above features mentioned for the frontend service.
+
+To make it ready for production we need to replace logic to pull questions and answers with specific code from api endpoints instead of reading it from a static file in current implementation.
 
 
 
